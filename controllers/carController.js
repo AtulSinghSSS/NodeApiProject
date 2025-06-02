@@ -5,9 +5,10 @@ exports.addNewCar = async (req, res) => {
   try {
     const { brand, model, seats, price_per_day, available } = req.body;
 
-    // File path from multer
-    const image_url = req.file ? req.file.path : null;
+    const image_url = req.file ? `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`  : null;
+        console.log("🖼️ Uploaded image path:", image_url); // 👈 Console log
 
+debugger;
     const car = await Car.create({
       brand,
       model,
@@ -19,6 +20,7 @@ exports.addNewCar = async (req, res) => {
 
     res.status(201).json({ message: "Car added successfully", car });
   } catch (err) {
+    console.error("❌ Error:", err.message);
     res.status(400).json({ error: err.message });
   }
 };

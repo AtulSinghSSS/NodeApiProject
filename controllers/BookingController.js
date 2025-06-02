@@ -1,6 +1,7 @@
 const db = require('../models');
 const Booking = db.booking;
 const Car = db.car;
+const SavedCar = db.SavedCar;
 
 exports.createBooking = async (req, res) => {
   try {
@@ -35,3 +36,31 @@ exports.getAllBookings = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
+// exports.getSavedCars = async (req, res) => {
+//   try {
+//     const { userId } = req.params;
+
+//     const savedCars = await SavedCar.findAll({
+//       where: { userId },
+//       include: [
+//         {
+//           model: Car,
+//           as: 'car'
+//         }
+//       ]
+//     });
+
+//     res.status(200).json({
+//       success: true,
+//       message: "Saved cars fetched successfully",
+//       data: savedCars.map(entry => entry.car)
+//     });
+//   } catch (err) {
+//     res.status(500).json({
+//       success: false,
+//       message: "Failed to fetch saved cars",
+//       error: err.message
+//     });
+//   }
+// };

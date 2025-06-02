@@ -10,10 +10,16 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 const db = {};
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+db.sequelize.sync({ alter: true });//For Alteration Table
 
 db.userAuth = require("./auth.model.js")(sequelize, DataTypes);
 db.car = require("./availableCarModel.js")(sequelize, DataTypes);
 db.booking = require('./BookingModel.js')(sequelize, DataTypes);
+db.SavedCar = require('./SavedCarModel.js')(sequelize, DataTypes);
+
 
 
 module.exports = db;
+
+
+
