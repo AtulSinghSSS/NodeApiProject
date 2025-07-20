@@ -14,6 +14,7 @@ const savedCarRoutes = require("./routes/SavedCarRoutes");
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./Swagger/swagger');
+app.use(express.static('public'));
 
 app.use(bodyParser.json());
 db.sequelize.sync().then(() => {
@@ -27,6 +28,7 @@ const uploadDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
+
 
 app.get('/', (req, res) => {
   res.send('✅ Azure Node.js app is working!');
