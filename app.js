@@ -28,6 +28,10 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
+app.get('/', (req, res) => {
+  res.send('✅ Azure Node.js app is working!');
+});
+
 app.use('/uploads', express.static('uploads'));
 
 app.use("/api", authRoutes);
