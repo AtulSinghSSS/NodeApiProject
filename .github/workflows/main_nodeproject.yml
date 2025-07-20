@@ -52,4 +52,4 @@ jobs:
           app-name: 'NodeProject'  # must match exactly with Azure Web App name
           slot-name: 'Production'  # case-insensitive, defaults to production
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3152A11D4AB64F01A8A6EB0EE4F8ABC9 }}
-          package: ./node-app
+          package: ./node-app/NodeProject
